@@ -1,0 +1,52 @@
+#-------------------------------- Catalog ----------------------------------
+CATALOG_NAME        default.cat         # output catalog name
+CATALOG_TYPE        ASCII_HEAD          # "ASCII_HEAD", "ASCII", or "FITS_1.0"
+PARAMETERS_NAME     default.param       # file name containing output parameters
+
+#------------------------------- Extraction --------------------------------
+DETECT_TYPE         CCD                 # CCD or PHOTO
+DETECT_MINAREA      5                   # minimum number of pixels above threshold
+DETECT_THRESH       1.5                 # <sigmas> or <threshold>,<ZP> in mag.arcsec-2
+ANALYSIS_THRESH     1.5                 # <sigmas> or <threshold>,<ZP> in mag.arcsec-2
+
+FILTER              Y                   # apply filter for detection (Y or N)?
+FILTER_NAME         gauss_2.0_3x3.conv  # name of the file containing the filter
+
+DEBLEND_NTHRESH     32                  # Number of deblending sub-thresholds
+DEBLEND_MINCONT     0.005               # Minimum contrast parameter for deblending
+
+CLEAN               Y                   # Clean spurious detections?
+CLEAN_PARAM         1.0                 # Cleaning efficiency
+
+#------------------------------ Photometry ---------------------------------
+PHOT_APERTURES      13.3333             # 0.8-arcsec circular aperture (0.8 / 0.06 = 13.3333 pix)
+PHOT_AUTOPARAMS     0.8, 3.5            # Kron factor set to k = 0.8, minimum radius 3.5
+PHOT_PETROPARAMS    2.0, 3.5            # Petrosian factor, minimum radius
+
+MAG_ZEROPOINT       26.4486             # Photometric zero-point (WFC3/IR F140W AB mag)
+MAG_GAMMA           4.0                 # gamma of emulsion (IRrelevant for CCD)
+GAIN                5170.5              # Exposure time in seconds
+PIXEL_SCALE         0.0600              # Size of pixel in arcsec (drizzled WFC3 scale)
+
+#---------------------------- Weighting -----------------------------------
+WEIGHT_TYPE         NONE             # MAP_IVM for detection, MAP_RMS for photometry
+WEIGHT_IMAGE        none      # Path to pipeline RMS file
+
+#------------------------- Star/Galaxy Separation --------------------------
+SEEING_FWHM         0.18                # Stellar FWHM in arcsec (HST WFC3/IR F140W)
+STARNNW_NAME        default.sex.nnw     # Neural-Network weight file name
+
+#------------------------------ Background ---------------------------------
+BACK_SIZE           64                  # Background mesh size
+BACK_FILTERSIZE     3                   # Background filter size
+BACKPHOTO_TYPE      LOCAL               # "GLOBAL" or "LOCAL"
+BACKPHOTO_THICK     24                  # Local background thickness in pixels
+
+#------------------------------ Check Image --------------------------------
+CHECKIMAGE_TYPE     SEGMENTATION        # Generates the segmentation map for G141
+CHECKIMAGE_NAME     f140w_seg.fits      # File name for the segmentation map
+
+#------------------------------ Memory -------------------------------------
+MEMORY_OBJSTACK     3000                # number of objects in stack
+MEMORY_PIXSTACK     300000              # number of pixels in stack
+MEMORY_BUFSIZE      1024                # buffer size in lines
